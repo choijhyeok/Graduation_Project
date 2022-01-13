@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="images/logo.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/logo.png" sizes="16x16" />
+  <title>AI를 활용한 안면인식 출결시스템</title>
+  <!--폰트 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+  <link href="{{url_for('static',filename='./css/styles1.css')}}" rel="stylesheet">
+
+  <link href="{{url_for('static',filename='./images/icons/gnu.ico')}}" rel="icon" type="image/png">
+  <link href="{{url_for('static',filename='./vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./font/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./font/iconic/css/material-design-iconic-font.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/animate/animate.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/css-hamburgers/hamburgers.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/animsition/css/animsition.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/select2/select2.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./vendor/daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./css/util.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./css/main.css')}}" rel="stylesheet" type="text/css">
+
+
+  <script src="{{url_for('static',filename='./vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/animsition/js/animsition.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/bootstrap/js/popper.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/select2/select2.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/daterangepicker/moment.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/countdowntime/countdowntime.js')}}"></script>
+  <script src="{{url_for('static',filename='./js/main.js')}}"></script>
+  
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style>
+    /*플로팅 버튼 시작*/
+.fab-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.fab-icon-holder {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: #016fb9;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.fab-icon-holder:hover {
+    opacity: 0.8;
+}
+
+.fab-icon-holder i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.fab {
+    width: 60px;
+    height: 60px;
+    background: #d23f31;
+}
+
+.fab-options {
+    list-style-type: none;
+    margin: 0;
+
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+
+    opacity: 0;
+
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 85% bottom;
+}
+
+.fab:hover+.fab-options,
+.fab-options:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fab-options li {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.fab-label {
+    padding: 2px 5px;
+    align-self: center;
+    user-select: none;
+    white-space: nowrap;
+    border-radius: 3px;
+    font-size: 16px;
+    background: #666666;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+}
+/*플로팅 버튼 끝*/    
+  </style>
+
+
+</head>
+
+
+
+
+
+<body id="page-top" onload="chkSize(event)" onscroll="headerbarToggle()"> 
+  <div class="fab-container">
+    <div class="fab fab-icon-holder">
+      <i class="fa fa-plus"></i>
+    </div>
+    <ul class="fab-options">
+        <li>
+            <span class="fab-label">처음으로</span>
+            <button class="fab-icon-holder"  type="button" onclick="location='gnu.html'">
+               <i class="fa fa-sign-out"></i>
+            </button>
+        </li>
+        <li>
+            <span class="fab-label">사용자 가이드</span>
+            <div class="fab-icon-holder">
+               <i class="fas fa-question"></i>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--위가 플로팅 버튼-->
+<div style=" background-color: white; left: 0;right: 0; height : 100px; z-index: 9999;" id="headerbar">
+    <img id="image" src="./static/images/logo_gnu.png"  width=400px style="position:relative; left: 210px; opacity: 1;"/>
+</div>
+
+<div style="position: relative; height: 400px;
+   color: #fff; 
+   background: url('http://drive.google.com/uc?export=view&id=1A22uIJ5VSEvcqjvhbCCUmq0HN6IUwgu_') no-repeat center center fixed ; 
+   background-size: 2300px 300px;
+   background-attachment : scroll ;
+    z-index: 9999; " >
+	 <span class="title2" style="font-family: 'Black Han Sans', sans-serif; color: black; position: relative; font-size: 50px; left: 1000px; top: 170px;">Register
+	 </span>
+
+</div>
+
+
+<div class="limiter" style="height: 600px;">
+		<div class="wrap-login100 p-t-85 p-b-20" >
+			<span class="login100-form-avatar" style="position: relative; left: 930px;">
+				<img src="./static/images/gnu.png" alt="gnu">
+			</span>
+			<form class="login100-form validate-form" action="/register.html" method="post" style="position: relative; left: 930px; bottom: 60px;">
+				
+
+				<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+					<input class="input100" type="text" name="name" placeholder="Name" onfocus="this.placeholder=''" onblur="this.placeholder='Name'">
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+					<input class="input100" type="number" name="Gnu_id" placeholder="Gnu Number" onfocus="this.placeholder=''" onblur="this.placeholder='Gnu Number'">
+				</div>
+
+				<div class="container-login100-form-btn" >
+					<button class="login100-form-btn" style="position: relative; top: 10px;" type="submit" action="{{url_for('register')}}">
+						Register
+					</button>
+				</div>
+			</form>
+			<!-- <form  action="/register.html" method="post">
+			<div class="container-login100-form-btn" >
+				<button class="login100-form-btn" style="position: relative; left: 1250px; bottom: 250px;" type="submit">
+					Face Capture
+				</button>
+			</div>
+		   </form>
+			<div class="container-login100-form-btn" >
+				<button class="login100-form-btn" style="position: relative; left: 1250px; bottom: 200px;">
+					Model Train
+				</button>
+			</div> -->
+			
+	</div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+  
+    <footer class="footer text-center" style="background-color: whitesmoke;">
+            <div class="container">
+              <ul class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a class="social-link rounded-circle text-white mr-3" href="javascript:void(0)" style="width: 100px; height: 100px;">
+                    <i class="fa fa-address-card-o fa-2x" aria-hidden="true" style="position: relative; top: 10px;" ></i>
+                    <p style="font-size: 20px; position: relative; top: 10px; font-family: 'Black Han Sans', sans-serif; color: white;">최재혁</p>
+
+                  </a>
+                  </li>
+                  
+                <li class="list-inline-item">
+                  <a class="social-link rounded-circle text-white mr-3" href="javascript:void(0)" style="width: 100px; height: 100px;">
+                    <i class="fa fa-address-card-o fa-2x" aria-hidden="true" style="position: relative; top: 10px;" ></i>
+                    <p style="font-size: 20px; position: relative; top: 10px;  font-family: 'Black Han Sans', sans-serif; color: white;">박재영</p>
+
+                  </a>
+                  </li>
+              </ul>
+              <b style="font-family: 'Black Han Sans', sans-serif; color: black; position: relative; top: 50px; right: 10px;">Double J project</b>
+            </div>
+          </footer>
+</body>
+
+</html>

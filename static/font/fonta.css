@@ -1,0 +1,13 @@
+@font-face {
+    font-family: BMEULJIROTTF;
+    src: url('BMEULJIROTTF.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+#timtle{
+    font-family: BMEULJIROTTF;
+}
+body{
+    font-family: BMEULJIROTTF;
+}

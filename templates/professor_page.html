@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" href="images/logo.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/logo.png" sizes="16x16" />
+  <title>AI를 활용한 안면인식 출결시스템</title>
+  <!--폰트 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+  <link href="{{url_for('static',filename='./css/styles1.css')}}" rel="stylesheet">
+
+  <link href="{{url_for('static',filename='./images/icons/gnu.ico')}}" rel="icon" type="image/png">
+  <link href="{{url_for('static',filename='./vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./font/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./font/iconic/css/material-design-iconic-font.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/animate/animate.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/css-hamburgers/hamburgers.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/animsition/css/animsition.min.css')}}"  rel="stylesheet" type="text/css" >
+  <link href="{{url_for('static',filename='./vendor/select2/select2.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./vendor/daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./css/util.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static',filename='./css/main.css')}}" rel="stylesheet" type="text/css">
+
+
+  <script src="{{url_for('static',filename='./vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/animsition/js/animsition.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/bootstrap/js/popper.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/select2/select2.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/daterangepicker/moment.min.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{url_for('static',filename='./vendor/countdowntime/countdowntime.js')}}"></script>
+  <script src="{{url_for('static',filename='./js/main.js')}}"></script>
+  
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style>
+    /*플로팅 버튼 시작*/
+.fab-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.fab-icon-holder {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: #016fb9;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.fab-icon-holder:hover {
+    opacity: 0.8;
+}
+
+.fab-icon-holder i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.fab {
+    width: 60px;
+    height: 60px;
+    background: #d23f31;
+}
+
+.fab-options {
+    list-style-type: none;
+    margin: 0;
+
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+
+    opacity: 0;
+
+    transition: all 0.3s ease;
+    transform: scale(0);
+    transform-origin: 85% bottom;
+}
+
+.fab:hover+.fab-options,
+.fab-options:hover {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fab-options li {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.fab-label {
+    padding: 2px 5px;
+    align-self: center;
+    user-select: none;
+    white-space: nowrap;
+    border-radius: 3px;
+    font-size: 16px;
+    background: #666666;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+}
+/*플로팅 버튼 끝*/    
+  </style>
+
+
+</head>
+
+
+
+
+
+<body id="page-top" onload="chkSize(event)" onscroll="headerbarToggle()"> 
+  <div class="fab-container">
+    <div class="fab fab-icon-holder">
+      <i class="fa fa-plus"></i>
+    </div>
+    <ul class="fab-options">
+        <li>
+            <span class="fab-label">처음으로</span>
+            <button class="fab-icon-holder"  type="button" onclick="location='gnu.html'">
+               <i class="fa fa-sign-out"></i>
+            </button>
+        </li>
+        <li>
+            <span class="fab-label">사용자 가이드</span>
+            <div class="fab-icon-holder">
+               <i class="fas fa-question"></i>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--위가 플로팅 버튼-->
+<div style=" position: fixed;background-color: white;left: 0;right: 0; height : 100px;z-index: 9999; transition : opacity 1s;" id="headerbar">
+    <img id="image" src="./static/images/logo_gnu.png"  width=400px style="position:relative; left: 210px; opacity: 1;"/>
+    <span style="background: #F9F7F6; border-left: 0.5em solid #57b846; padding: 0.5em; position: relative; left: 1600px; color: black;">Professor Page</span>
+</div>
+
+    <script>
+          document.addEventListener('scroll', () => {
+        let myNav = document.getElementById("headerbar");
+        let image = document.getElementById("image");
+        if(window.scrollY !== 0){
+          myNav.style.opacity = window.scrollY !== 0 ? .6 : 1;
+          image.style.opacity = 1
+        }
+        else{
+          myNav.style.opacity =1
+          image.style.opacity = 1
+        }
+      });
+     </script>
+
+
+<div class="limiter" style="height:auto; width: 100%;">
+    <div class="container-login100">
+      <div class="container">
+        <hr>
+        
+        <div class="row">
+          <aside class="col-sm-4">
+        
+        <!--줌코드 설정란-->
+        <div class="card">
+          <article class="card-group-item">
+            <header class="card-header">
+              <h6 class="title">Zoom Invite Code Setting</h6>
+            </header>
+            <div class="filter-content">
+              <div class="card-body">
+                <span class="login100-form-avatar">
+                            <img src="./static/images/Zoom.png" alt="gnu">
+                        </span>
+              <form style="position: relative; bottom: 50px;">
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+                            <input class="input100" type="text" name="Zoom Code">
+                            <span class="focus-input100" data-placeholder="Zoom Code"></span>
+                        </div>
+                <button class="login100-form-btn">
+                  Zoom Code Setting
+                </button>
+              </form>
+        
+              </div> <!-- card-body.// -->
+            </div>
+          </article> <!-- card-group-item.// -->
+        </div> <!-- card.// -->
+        
+        
+          </aside> <!-- col.// -->
+          <aside class="col-sm-4">
+            
+            <!--비대면 출결기록 이메일 전송-->
+            <div class="card">
+              <article class="card-group-item">
+                <header class="card-header">
+                  <h6 class="title">Attend Zoom List To Email</h6>
+                </header>
+                <div class="filter-content">
+                  <div class="card-body">
+                    <span class="login100-form-avatar">
+                      <img src="./static/images/face.png" alt="gnu" style="width: 70px; position: relative; left: 24px; top: 11px;">
+                    </span>
+                  <form style="position: relative; bottom: 50px;">
+                    <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+                      <input class="input100" type="text" name="Insert Email">
+                      <span class="focus-input100" data-placeholder="Insert Email"></span>
+                    </div>
+                    <button class="login100-form-btn">
+                      Send
+                    </button>
+                  </form>
+            
+                  </div> <!-- card-body.// -->
+                </div>
+              </article> <!-- card-group-item.// -->
+            </div> <!-- card.// -->
+        
+        
+        
+          </aside> <!-- col.// -->
+          <aside class="col-sm-4">
+        
+            <!--대면 출결기록 이메일 전송-->
+            <div class="card">
+              <article class="card-group-item">
+                <header class="card-header">
+                  <h6 class="title">Face To Face Attend List To Email</h6>
+                </header>
+                <div class="filter-content">
+                  <div class="card-body">
+                    <span class="login100-form-avatar">
+                      <img src="./static/images/job-interview.png" alt="gnu" style="width: 70px; position: relative; left: 24px; top: 11px;">
+                    </span>
+                  <form style="position: relative; bottom: 50px;">
+                    <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+                      <input class="input100" type="text" name="Insert Email">
+                      <span class="focus-input100" data-placeholder="Insert Email"></span>
+                    </div>
+                    <button class="login100-form-btn">
+                      Send
+                    </button>
+                  </form>
+            
+                  </div> <!-- card-body.// -->
+                </div>
+              </article> <!-- card-group-item.// -->
+            </div> <!-- card.// -->
+        
+        
+        
+          </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+
+        </div>
+    </div>
+
+
+<div id="dropDownSelect1"></div>
+  
+    <footer class="footer text-center" style="background-color: whitesmoke;">
+            <div class="container">
+              <ul class="list-inline">
+              
+                <li class="list-inline-item">
+                  <a class="social-link rounded-circle text-white mr-3" href="javascript:void(0)" style="width: 100px; height: 100px;">
+                    <i class="fa fa-address-card-o fa-2x" aria-hidden="true" style="position: relative; top: 10px;" ></i>
+                    <p style="font-size: 20px; position: relative; top: 10px; font-family: 'Black Han Sans', sans-serif; color: white;">최재혁</p>
+
+                  </a>
+                  </li>
+                  
+                <li class="list-inline-item">
+                  <a class="social-link rounded-circle text-white mr-3" href="javascript:void(0)" style="width: 100px; height: 100px;">
+                    <i class="fa fa-address-card-o fa-2x" aria-hidden="true" style="position: relative; top: 10px;" ></i>
+                    <p style="font-size: 20px; position: relative; top: 10px;  font-family: 'Black Han Sans', sans-serif; color: white;">박재영</p>
+
+                  </a>
+                  </li>
+              </ul>
+              <b style="font-family: 'Black Han Sans', sans-serif; color: black; position: relative; top: 50px; right: 10px;">Double J project</b>
+            </div>
+          </footer>
+</body>
+
+</html>
