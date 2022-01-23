@@ -4,12 +4,10 @@
 
 ## 1. 목적 및 동기
 
- - 코로나 상황에서 zoom 으로 비대면 수업으로 인해 교수님이 출석을 부르면서 시간이 지체됨
- - 비대면 수업으로 인해 대리출석의 위험성이 커져가고 있는 상황
- 
- :rocket: 이를 해결하기위해서 안면인식 출결시스템을 고안
+ - 코로나 상황에서 zoom으로 비대면 수업 때문에 교수님이 출석을 부르면서 시간이 지체됨
+ - 비대면 수업으로 인해 대리출석의 위험성이 커지고 있는 상황
 
-
+:rocket: 이를 해결하기 위해서 안면인식 출결 시스템을 고안
 
 &nbsp;
 
@@ -22,7 +20,7 @@
 &nbsp;
 ## 3. 필수 설치 패키지
 
-requirements.txt의 패키지를 설치해야함
+requirements.txt의 패키지를 설치해야 함
 
 ```
 appdirs==1.4.3
@@ -53,7 +51,7 @@ Flask==1.1.2
 
 ## 4. 실행방법
 
-종속 패키지를 모두 설치후에 flask_app.py 을 실행
+종속 패키지를 모두 설치 후에 flask_app.py 을 실행
 
 ```
 python flask_app.py
@@ -63,7 +61,7 @@ python flask_app.py
 
 ## 5. 회원가입, 로그인 안면인식 화면
 
-- 회원가입시 Capture_Image.py 에서 120초간 사진 캡쳐후 저장 , 저장된 이미지 Train_Image.py 통해서 재학습
+- 회원가입시 Capture_Image.py 에서 120초간 사진 캡쳐 후 저장 , 저장된 이미지 Train_Image.py 통해서 재학습
 
 ![train](http://drive.google.com/uc?export=view&id=1h54xdajPeVdeaVtGjr0jP1USQb5VYDvo)
 
