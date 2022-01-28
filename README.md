@@ -29,7 +29,7 @@ black==19.3b0
 Click==7.0
 cycler==0.10.0
 demjson==2.2.4
-kiwisolver==1.1.0
+kiwisolver==1.1.0 
 matplotlib==3.1.1
 nose==1.3.7
 numpy==1.17.0
